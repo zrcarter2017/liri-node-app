@@ -3,6 +3,7 @@ var Twitter = require('twitter');
 var Spotify = require('node-spotify-api');
 var request = require('request');
 var keys = require('./keys');
+var fs = require('fs');
 var command = process.argv[2];
 var searchString = process.argv.slice(3).join(" ");
 
@@ -59,6 +60,10 @@ else if (command === 'movie-this') {
 else if (command === 'do-what-it-says') {
 	console.log("do something");
 	// include fs logic
+	fs.readFile('random.txt', 'utf8', function (err, data) {
+		if (err) throw err;
+  		console.log(data);
+	})
 }
 
 else {
